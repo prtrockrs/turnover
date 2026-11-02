@@ -1,4 +1,4 @@
-#include "game.hpp"
+#include "Game.hpp"
 
 #include "raylib.h"
 #include "../ecs/entity.hpp"
