@@ -1,3 +1,5 @@
+#include "core/Game.hpp"
+
 #include "raylib.h"
 #include <stdio.h>
 
