@@ -4,15 +4,11 @@
 #include <stdio.h>
 
 int main() {
-	InitWindow(500, 500, "test");
-	printf("hi");
+	Game game = Game();
 
-	while (!WindowShouldClose()) {
-		BeginDrawing();
-		ClearBackground(RAYWHITE);
-		EndDrawing();
-	}
-	
-	CloseWindow();
+	game.init();
+	game.run();
+	game.shutdown();
+
 	return 0;
 }
