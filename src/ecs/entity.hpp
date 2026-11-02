@@ -2,7 +2,7 @@
 
 class Entity {
 	unsigned int e_id;
-	unsigned static int id_count;
+	inline static unsigned int id_count;
 
 	public:
 		Entity() {
