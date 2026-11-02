@@ -9,5 +9,3 @@ struct Position {
 struct Velocity {
 	Vector2 dir;
 };
-
-struct Blob { };

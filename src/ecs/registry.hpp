@@ -2,6 +2,7 @@
 
 #include "component_container.hpp"
 #include "entity.hpp"
+#include "components.hpp"
 #include <vector>
 #include <memory>
 

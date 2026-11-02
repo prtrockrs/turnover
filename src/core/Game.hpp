@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../ecs/registry.hpp"
-#include "../ecs/components.hpp"
+#include "../systems/test_entity_system.hpp"
 
 class Game {
 	public:
@@ -15,6 +15,7 @@ class Game {
 	private:
 		bool initialized = false;
 		Registry registry;
+		TestEntitySystem test_entity_system;
 		
 		void update(float dt);
 		void render();
