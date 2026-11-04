@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://5lq81l8j7rjv"]
+
+[ext_resource type="Texture2D" uid="uid://q51o20sknk0r" path="res://Sprites/tiles.png" id="1_wjp1n"]
+[ext_resource type="PackedScene" uid="uid://cj7o35avx77y2" path="res://Scenes/player.tscn" id="2_ng53c"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ng53c"]
+texture = ExtResource("1_wjp1n")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_rf308"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ng53c")
+
+[node name="Area1" type="Node2D" unique_id=2118911966]
+
+[node name="Layer0" type="TileMapLayer" parent="." unique_id=453546583]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAIAAAABAAAAAAABAAIAAAACAAAAAAABAAIAAAADAAAAAAABAAIAAAAEAAAAAAABAAIAAAAFAAAAAAABAAIAAAAGAAAAAAABAAIAAAAHAAAAAAABAAIAAAAIAAAAAAABAAIAAAAJAAAAAAACAAIAAAD9/wAAAAAAAAIAAAD+/wAAAAABAAIAAAD//wAAAAABAAIAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAEAAAAGAP7/AAACAAAAAAAGAP//AAACAAEAAAACAPz/AAAAAAIAAAADAPz/AAABAAIAAAAEAPz/AAABAAIAAAAFAPz/AAACAAIAAAA=")
+tile_set = SubResource("TileSet_rf308")
+
+[node name="Player" parent="." unique_id=1136901512 instance=ExtResource("2_ng53c")]
