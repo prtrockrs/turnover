@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://cj7o35avx77y2"]
 
-[ext_resource type="Script" uid="uid://nj6x5mc6mhkq" path="res://Scripts/player/control.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://don3mi8gnb18g" path="res://Sprites/player.png" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://nj6x5mc6mhkq" path="res://scripts/player/control.gd" id="1_y8w33"]
+[ext_resource type="Texture2D" uid="uid://don3mi8gnb18g" path="res://sprites/player.png" id="2_xa75v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rf308"]
 radius = 12.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1136901512]
-script = ExtResource("1_cvnsp")
+script = ExtResource("1_y8w33")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1948203042]
 zoom = Vector2(3, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=606502899]
 position = Vector2(0, -16)
-texture = ExtResource("2_6t5aa")
+texture = ExtResource("2_xa75v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715995606]
 position = Vector2(0, -15)

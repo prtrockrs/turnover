@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://5lq81l8j7rjv"]
 
-[ext_resource type="Texture2D" uid="uid://q51o20sknk0r" path="res://Sprites/tiles.png" id="1_wjp1n"]
-[ext_resource type="PackedScene" uid="uid://cj7o35avx77y2" path="res://Scenes/player.tscn" id="2_ng53c"]
+[ext_resource type="Texture2D" uid="uid://q51o20sknk0r" path="res://sprites/tiles.png" id="1_1s624"]
+[ext_resource type="PackedScene" uid="uid://cj7o35avx77y2" path="res://scene/player.tscn" id="2_ng53c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ng53c"]
-texture = ExtResource("1_wjp1n")
+texture = ExtResource("1_1s624")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
