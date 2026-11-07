@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://brk06owpqqth3"]
+
+[ext_resource type="Texture2D" uid="uid://cpiy3fwp0lpp1" path="res://sprites/guard.png" id="1_hxjr3"]
+[ext_resource type="Script" uid="uid://c3simdsdwksiy" path="res://scripts/guard.gd" id="1_x1kce"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(26, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(176, 85)
+
+[node name="Guard" type="RigidBody2D" unique_id=1003810670]
+script = ExtResource("1_x1kce")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=265341380]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=536368074]
+texture = ExtResource("1_hxjr3")
+
+[node name="DetectionRange" type="Area2D" parent="." unique_id=1391274233]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange" unique_id=407066003]
+position = Vector2(1, -11.5)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

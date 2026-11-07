@@ -6,7 +6,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rf308"]
 radius = 12.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1136901512]
+[node name="Player" type="CharacterBody2D" unique_id=1136901512 groups=["player"]]
+collision_layer = 3
 script = ExtResource("1_y8w33")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1948203042]
