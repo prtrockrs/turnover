@@ -9,7 +9,7 @@ size = Vector2(26, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
 size = Vector2(176, 85)
 
-[node name="Guard" type="RigidBody2D" unique_id=1003810670]
+[node name="Guard" type="CharacterBody2D" unique_id=1169186090]
 script = ExtResource("1_x1kce")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=265341380]
@@ -25,6 +25,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange" unique_id=407066003]
 position = Vector2(1, -11.5)
 shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="LeftRay" type="RayCast2D" parent="." unique_id=91837706]
+position = Vector2(-15, 1)
+target_position = Vector2(0, 36)
+
+[node name="RightRay" type="RayCast2D" parent="." unique_id=166789693]
+position = Vector2(15, 1)
+target_position = Vector2(0, 36)
 
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
