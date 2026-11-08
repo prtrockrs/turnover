@@ -29,10 +29,10 @@ func process_controls() -> void:
 	if choosing_form:
 		if Input.is_action_just_pressed("ui_right"):
 			selected_index = (selected_index + 1) % controls.size()
+			print("Select %d?" % [selected_index])
 		elif Input.is_action_just_pressed("ui_left"):
 			selected_index = (selected_index - 1 + controls.size()) % controls.size()
-		
-		print("Select %d?" % [selected_index])
+			print("Select %d?" % [selected_index])
 	
 		if Input.is_action_just_released("player_transform"):
 			active_control = controls[selected_index]
