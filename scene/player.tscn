@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://cj7o35avx77y2"]
 
-[ext_resource type="Script" uid="uid://nj6x5mc6mhkq" path="res://scripts/player/control.gd" id="1_y8w33"]
+[ext_resource type="Script" uid="uid://dg7tpx7xftc2f" path="res://scripts/custom_nodes/player.gd" id="1_s4jxa"]
 [ext_resource type="Texture2D" uid="uid://don3mi8gnb18g" path="res://sprites/player.png" id="2_xa75v"]
+[ext_resource type="Script" uid="uid://c0ya2aiifkwai" path="res://scripts/custom_nodes/control_manager.gd" id="3_s4jxa"]
+[ext_resource type="Script" uid="uid://onco07ug4e8r" path="res://scripts/custom_nodes/human_control.gd" id="4_oh5ij"]
+[ext_resource type="Script" uid="uid://3s3nf6wsca6q" path="res://scripts/custom_nodes/mouse_control.gd" id="5_hp4bs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rf308"]
 radius = 12.0
@@ -20,3 +23,13 @@ texture = ExtResource("2_xa75v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715995606]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_rf308")
+
+[node name="ControlManager" type="Node" parent="." unique_id=1366761107]
+script = ExtResource("3_s4jxa")
+
+[node name="HumanControl" type="Node" parent="ControlManager" unique_id=117576790]
+script = ExtResource("4_oh5ij")
+metadata/_custom_type_script = "uid://clsu23g4r8yju"
+
+[node name="MouseControl" type="Node" parent="ControlManager" unique_id=430451380]
+script = ExtResource("5_hp4bs")
