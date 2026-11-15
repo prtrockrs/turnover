@@ -15,6 +15,8 @@ enum Direction {
 const CAPTURE_DISTANCE: float = 60.0
 const PATROL_SPEED: float = 50.0
 const PURSUING_SPEED: float = 100.0
+const CAPTURE_DURATION: float = 1.0
+const CAPTURE_COLOR: Color = Color.DODGER_BLUE
 
 @onready var left_ray: RayCast2D = $LeftRay
 @onready var right_ray: RayCast2D = $RightRay
@@ -43,14 +45,22 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 		
 func transition_states_if_needed():
-	if current_state == State.IDLE and player != null:
-		current_state = State.PURSUING
-	elif current_state == State.PURSUING and player != null:
-		if player_in_capture_range():
-			print("capturing player")
-			current_state = State.CAPTURING
-	elif current_state == State.PURSUING and player == null:
-		current_state = State.IDLE
+	match current_state:
+		State.IDLE:
+			if player != null:
+				current_state = State.PURSUING
+
+		State.PURSUING:
+			if player == null:
+				current_state = State.IDLE
+			elif player_in_capture_range():
+				enter_capturing_state()
+
+		State.CAPTURING:
+			pass
+			
+		State.CAPTURED:
+			pass
 			
 # to lock the guard in a capture animation
 # so the player isnt like, immediately killed game over
@@ -80,6 +90,28 @@ func idle_behaviour() -> void:
 	var dir = -1 if (direction == Direction.LEFT) else 1
 
 	velocity.x = dir * speed
+	
+func enter_capturing_state() -> void:
+	current_state = State.CAPTURING
+	var tween = create_tween()
+	
+	tween.tween_property(
+		sprite,
+		"self_modulate",
+		CAPTURE_COLOR,
+		CAPTURE_DURATION
+	)
+	
+	tween.finished.connect(func():
+		sprite.self_modulate = Color.WHITE
+		if player != null and player_in_capture_range():
+			current_state = State.CAPTURED
+			print("player captured")
+		elif player != null:
+			current_state = State.PURSUING
+		else:
+			current_state = State.IDLE
+	)
 	
 # requires that player != null
 func player_in_capture_range() -> bool:
