@@ -1,6 +1,7 @@
 extends PlayerControl
 
 const SPEED = 600.0
+const RUN_SPEED = 800.0
 const JUMP_VELOCITY = -600.0
 
 func handle_input() -> void:

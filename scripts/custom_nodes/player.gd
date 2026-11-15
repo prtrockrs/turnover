@@ -9,9 +9,12 @@ enum States {
 	CUTSCENE,
 }
 
+@onready var control_manager: Node = $ControlManager
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 var current_state: States = States.IDLE
 
-@onready var control_manager: Node = $ControlManager
+@export var collision_shape: Shape2D
 
 func _ready() -> void:
 	control_manager.setup(self)
@@ -25,19 +28,30 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	_update_animations()
+	_update_movement_state()
 	
+	_update_animations()
+
+func _update_movement_state() -> void:
+	if not is_on_floor():
+		current_state = States.JUMP #if velocity.y < 0.0 else States.FALL
+	elif absf(velocity.x) < 1.0:
+		current_state = States.IDLE
+	else:
+		current_state = States.WALK
+
 func _update_animations() -> void:
-	# Add animation player script
-	#match current_state:
-		#States.IDLE:
-			#animation_player.play("idle")
-		#States.WALK:
-			#animation_player.play("walk")
-		#States.RUN:
-			#animation_player.play("run")
-		#States.JUMP:
-			#animation_player.play("jump")
-		#States.FALL:
-			#animation_player.play("fall")
-	pass
+	# lazy sprite flipping
+	if velocity.x < 0.0:
+		sprite.flip_h = true
+	elif velocity.x > 0.0:
+		sprite.flip_h = false
+	
+	var active_control = control_manager.active_control
+	var state_name = States.keys()[current_state].to_lower()
+	if active_control == $ControlManager/HumanControl:
+		sprite.play("human_%s" % state_name)
+	elif active_control == $ControlManager/MouseControl:
+		sprite.play("mouse_%s" % state_name)
+	else:
+		print("Error: unknown animation state")

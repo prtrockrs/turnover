@@ -1,4 +1,4 @@
-extends Node
+class_name ControlManager extends Node
 
 @onready var human_control: PlayerControl = $HumanControl
 @onready var mouse_control: PlayerControl = $MouseControl
