@@ -1,7 +1,8 @@
 class_name PlayerControl extends Node
 
 var player: Player
-var form_name := "human" #default
+@export var sprite: AnimatedSprite2D
+@export var collision: CollisionShape2D
 
 func setup(player: Player) -> void:
 	self.player = player

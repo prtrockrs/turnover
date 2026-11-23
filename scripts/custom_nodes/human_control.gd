@@ -1,8 +1,10 @@
-extends PlayerControl
+class_name HumanControl extends PlayerControl
 
 const SPEED = 300.0
 const RUN_SPEED = 450.0
 const JUMP_VELOCITY = -400.0
+
+@export var sprite
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("player_jump") and player.is_on_floor():

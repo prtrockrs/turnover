@@ -22,22 +22,6 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("2_s4jxa")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ml7e8"]
-atlas = ExtResource("2_s4jxa")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihjo1"]
-atlas = ExtResource("2_s4jxa")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dk1vr"]
-atlas = ExtResource("2_s4jxa")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_34jf3"]
-atlas = ExtResource("2_s4jxa")
-region = Rect2(32, 32, 32, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_rf308"]
 animations = [{
 "frames": [{
@@ -71,7 +55,29 @@ animations = [{
 "loop": 0,
 "name": &"human_walk",
 "speed": 5.0
-}, {
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rf308"]
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml7e8"]
+atlas = ExtResource("2_s4jxa")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihjo1"]
+atlas = ExtResource("2_s4jxa")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk1vr"]
+atlas = ExtResource("2_s4jxa")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34jf3"]
+atlas = ExtResource("2_s4jxa")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxhjp"]
+animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ml7e8")
@@ -105,8 +111,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rf308"]
-radius = 12.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_rf308"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1136901512 groups=["player"]]
 collision_layer = 3
@@ -115,21 +120,37 @@ script = ExtResource("1_s4jxa")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1948203042]
 zoom = Vector2(3, 3)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1581667851]
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_rf308")
-animation = &"mouse_idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715995606]
-position = Vector2(0, -15)
-shape = SubResource("CapsuleShape2D_rf308")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1176697347]
 
 [node name="ControlManager" type="Node" parent="." unique_id=1366761107]
 script = ExtResource("3_s4jxa")
 
-[node name="HumanControl" type="Node" parent="ControlManager" unique_id=117576790]
+[node name="Human" type="Node" parent="ControlManager" unique_id=330407070]
+
+[node name="HumanSprite" type="AnimatedSprite2D" parent="ControlManager/Human" unique_id=1581667851]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_rf308")
+animation = &"human_idle"
+
+[node name="HumanCollision" type="CollisionShape2D" parent="ControlManager/Human" unique_id=1715995606]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_rf308")
+
+[node name="HumanControl" type="Node" parent="ControlManager/Human" unique_id=117576790]
 script = ExtResource("4_oh5ij")
 metadata/_custom_type_script = "uid://clsu23g4r8yju"
 
-[node name="MouseControl" type="Node" parent="ControlManager" unique_id=430451380]
+[node name="Mouse" type="Node" parent="ControlManager" unique_id=1770522244]
+
+[node name="MouseSprite" type="AnimatedSprite2D" parent="ControlManager/Mouse" unique_id=864064597]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_mxhjp")
+animation = &"mouse_idle"
+
+[node name="MouseCollision" type="CollisionShape2D" parent="ControlManager/Mouse" unique_id=505004152]
+position = Vector2(0, -11)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_rf308")
+
+[node name="MouseControl" type="Node" parent="ControlManager/Mouse" unique_id=430451380]
 script = ExtResource("5_hp4bs")

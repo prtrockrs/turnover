@@ -1,4 +1,4 @@
-extends PlayerControl
+class_name MouseControl extends PlayerControl
 
 const SPEED = 600.0
 const RUN_SPEED = 800.0

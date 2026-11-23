@@ -14,8 +14,6 @@ enum States {
 
 var current_state: States = States.IDLE
 
-@export var collision_shape: Shape2D
-
 func _ready() -> void:
 	control_manager.setup(self)
 	
